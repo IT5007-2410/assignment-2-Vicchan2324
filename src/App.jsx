@@ -187,6 +187,14 @@ class TicketToRide extends React.Component {
 
   deleteTraveller(name) {
     /*Q5. Write code to delete a passenger from the traveller state variable.*/
+    const travellerExists = this.state.travellers.some(traveller => traveller.name === name);
+  
+    if (!travellerExists) {
+      alert('Traveller not found. Please check the name and try again.');
+      return;
+    }
+
+    // Proceed to delete the traveller
     this.setState(prevState => ({
       travellers: prevState.travellers.filter(traveller => traveller.name !== name)
     }));
